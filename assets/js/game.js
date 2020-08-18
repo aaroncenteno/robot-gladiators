@@ -49,9 +49,9 @@ var fight = function(enemyName) {
 
       // leave while() loop since enemy is dead
       break;
-    } else {
+    }   else {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
-    }
+        }
 
     // remove players's health by subtracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
@@ -70,21 +70,37 @@ var fight = function(enemyName) {
   }
 };
 
-if (playerHealth > 0) {
-    window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ))
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    debugger;
-    fight(pickedEnemyName);
-}
+var startGame = function() {
+    // reset player stats
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
 
-else {
-    window.alert("You have lost your robot in battle! Game Over!");
-    // break;
-}
+    for (var i = 0; i <  enemyNames.length; i++) {
+        if (playerHealth > 0) {
+            window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ));
+    
+            var pickedEnemyName = enemyNames[i];
+            
+            enemyHealth = 50;
+    
+            fight(pickedEnemyName);
+        }
+        else {
+            window.alert("You have lost your robot in battle! Game Over!");
+            break;
+        }
+    }
+    startGame();
+};
 
-for (var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyNames = enemyNames[i];
-    enemyHealth = 50;
-    fight(enemyNames[i]);
-  }
+var endGame = function() {
+    window.alert("The game has now ended. Let's see how you did!");
+};
+// for (var i = 0; i < enemyNames.length; i++) {
+//     var pickedEnemyNames = enemyNames[i];
+//     enemyHealth = 50;
+//     fight(enemyNames[i]);
+// }
+
+  startGame();
